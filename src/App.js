@@ -8,7 +8,9 @@ import {
 import './App.css';
 import Posts from './Components/Posts/Posts';
 import NotFound from './Components/NotFound/NotFound';
-import Details from './Details/Details';
+import Details from './Components/Details/Details';
+
+
 
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
 
           <Route path="/posts/:postId">
             <Details></Details>
+           
 
           </Route>
 
