@@ -21,11 +21,11 @@ const handleClick=(postId)=>{
 
 
             <Grid item xs={12}>
-            <Box bgcolor="success.main" color="success.contrastText" p={2}>
+            <Box bgcolor="primary.main" color="primary.contrastText" p={2}>
                
 
-            <h4>Post No: {id}</h4>
-            <h3>Post Title- {title}</h3>  
+            <h4> No: {id}</h4>
+            <h3> {title}</h3>  
             <br></br>
 
             

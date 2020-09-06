@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Comments from '../Comments/Comments';
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,49 +13,41 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(3),
         margin: 'auto',
-        maxWidth: 'auto',
+        maxWidth: 1000,
         marginTop:'50px',
-        backgroundColor:'#3F51B5',
-        color:'white',
+        backgroundColor:'Lightgray',
+        color:'black',
         textAlign:'center',
-        marginLeft:'20px',
-        marginRight:'20px'
+        marginBottom:'10px'
         
     },
 
 
 }));
 
-const Details = () => {
 
-    const { postId } = useParams();
-    const [comment,setComment]=useState([]);
-    const [post, setPost] = useState({})
+const Comments = (props) => {
 
+    // console.log(props)
 
-    useEffect(() => {
-        const url = `https://jsonplaceholder.typicode.com/posts/${postId}`
+    const {name,email,body}=props.comment;
 
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setPost(data))
+    
 
-    }, [])
+    const randomStyle={
+        height:'70px',
+        width:'70px',
+       
+        borderRadius:'50%'
+    }
 
-
-    useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
-        .then(res=>res.json())
-        .then(data=>setComment(data))
-
-
-    },[])
-
-
+   
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
+
+            
             <Paper className={classes.paper}>
                 <Grid container spacing={3}>
 
@@ -65,13 +55,24 @@ const Details = () => {
                         <Grid item xs container direction="column" spacing={3}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="subtitle1">
-                                    <h1>{post.title}</h1>
+
+
+                                    <h1><img style={randomStyle} src={`https://randomuser.me/api/portraits/men/${Math.floor(Math.random()*70)}.jpg`} alt=""/> {name}</h1>
+
+
                                 </Typography>
                                 <Typography variant="body2" gutterBottom>
-                                    <p>{post.body}</p>
+                                    <p>Comments: {body}</p>
 
                                    
                                 </Typography>
+
+                                <Typography variant="body2" gutterBottom>
+                                    <p><small>Contact: {email}</small></p>
+
+                                   
+                                </Typography>
+
 
                             </Grid>
 
@@ -80,19 +81,12 @@ const Details = () => {
                     </Grid>
                 </Grid>
             </Paper>
-            <br/>
-           
 
-            {
-                comment.map(comment=> <Comments comment={comment}></Comments>)
-            }
-
-                   
-
+          
             
         </div>
     );
 }
 
 
-export default Details;
+export default Comments;

@@ -3,12 +3,14 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+
 } from "react-router-dom";
 import './App.css';
 import Posts from './Components/Posts/Posts';
 import NotFound from './Components/NotFound/NotFound';
 import Details from './Components/Details/Details';
+import Header from './Components/Header/Header';
+
 
 
 
@@ -16,7 +18,11 @@ import Details from './Components/Details/Details';
 function App() {
   return (
     <div>
+     <Header></Header>
+      
       <Router> 
+        
+        
 
         <Switch>
 

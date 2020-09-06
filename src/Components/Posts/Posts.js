@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Posts.css';
 import Title from '../Title/Title';
 
 const Posts = () => {
