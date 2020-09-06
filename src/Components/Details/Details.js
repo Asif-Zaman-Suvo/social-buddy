@@ -31,8 +31,10 @@ const useStyles = makeStyles((theme) => ({
 const Details = () => {
 
     const { postId } = useParams();
-    const [comment,setComment]=useState([]);
+    
     const [post, setPost] = useState({})
+    const [comment,setComment]=useState([]);
+    
 
 
     useEffect(() => {
